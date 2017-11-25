@@ -45,7 +45,7 @@ def main():
     try:
         fileHandle = open("customer.txt", "r")
         lineList = fileHandle.readlines()
-        print("Customer: " + lineList[len(lineList)-1])
+        print(lineList[len(lineList)-1])
         fileHandle.close()
 
     except IOError as errorMsg:
