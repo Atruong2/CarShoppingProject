@@ -38,7 +38,7 @@ def pickCar():
 
     print("Congrats! You've picked a " +make, model, option, "for " + price)
     fileHandle = open("customer.txt", "a")
-    fileHandle.write("%s,%s,%s, for %s\n"%(make, model, option, price))
+    fileHandle.write("%s ,%s ,%s , for %s\n"%(make, model, option, price))
     fileHandle.close()
 
 def main():
