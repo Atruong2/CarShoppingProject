@@ -2,6 +2,26 @@
 # Car Shopping Project
 
 def pickCar():
+
+    def pickOption(baseprice):
+        options = int(input("""You can upgrade your vehicle:\n1) Standard -- (base price)\n2) Sports -- + $3,000
+              \n3) Luxury -- + $6,000\n"""))
+        if (options == 1):
+            option = "Standard"
+            price = baseprice
+            return option, price
+
+        elif (options == 2):
+            option = "Sports"
+            price = baseprice + 3000
+            return option, price
+
+        elif (options == 3):
+            option = "Luxury"
+            price = baseprice + 6000
+            return option, price
+
+
     make = ""
     model = ""
     option = ""
@@ -12,16 +32,10 @@ def pickCar():
         fordModel = int(input("""Please choose a model:\n1) F-150\n2) Focus\n3) Mustang\n"""))
         if (fordModel == 1):
             model = "F-150"
+            f150baseprice = 27380
             print("The base price of a 2018 Ford F-150 is: $27,380")
-            f150Options = int(input("""You can upgrade your F-150.\n1) Standard XL -- (base price)\n2) Lariat -- $40,685
-                \n3) King Ranch -- $51,600\n"""))
-            if (f150Options == 1):
-                option = "Standard XL"
-                price = "$27,380"
-            elif (f150Options == 2):
-                pass
-            elif (f150Options == 3):
-                pass
+            option, price = pickOption(f150baseprice)
+
         elif (fordModel == 2):
             print("The base price of a 2018 Ford Focus is: $17,860")
             focusOptions = int(input("""You can upgrade your Focus.
@@ -35,8 +49,7 @@ def pickCar():
             2) EcoBoost Convertible -- $31,085
             3) Shelby GT350 -- $57,145"""))
 
-
-    print("Congrats! You've picked a " +make, model, option, "for " + price)
+    print("Congrats! You've picked a " +make, model, option, "for " + str(price))
     fileHandle = open("customer.txt", "a")
     fileHandle.write("%s, %s, %s, for %s\n"%(make, model, option, price))
     fileHandle.close()
@@ -52,6 +65,7 @@ def main():
         open("customer.txt", "w")
         print("Creating new customer file...")
     finally:
+        print("")
         name = input("Please enter your full name!\n")
         fileHandle = open("customer.txt", "a")
 
