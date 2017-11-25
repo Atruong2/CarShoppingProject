@@ -6,11 +6,10 @@ def pickCar():
     make = ""
     model = ""
     option = ""
-    price = ""
+    price = 0.00
 
     def pickOption(baseprice):
-        options = int(input("""You can upgrade your vehicle:\n1) Standard -- (base price)\n2) Sports -- + $3,000
-              \n3) Luxury -- + $6,000\n"""))
+        options = int(input("""You can upgrade your vehicle:\n1) Standard -- (base price)\n2) Sports -- + $3,000\n3) Luxury -- + $6,000\n"""))
         if (options == 1):
             option = "Standard"
             price = baseprice
@@ -25,8 +24,6 @@ def pickCar():
             option = "Luxury"
             price = baseprice + 6000
             return option, price
-
-
 
     userMake = int(input("""Please choose a make:\n1) Ford\n2) Chevrolet\n3) Toyota\n"""))
     if (userMake == 1):
@@ -52,6 +49,9 @@ def pickCar():
             print("The base price of a 2018 Ford Mustang is: $25,585")
             option, price = pickOption(mustangBaseprice)
 
+
+
+    price = '${:,.2f}'.format(price)
 
     print("Congrats! You've picked a " +make, model, option, "for " + str(price))
     fileHandle = open("customer.txt", "a")
